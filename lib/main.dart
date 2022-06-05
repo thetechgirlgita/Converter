@@ -27,6 +27,13 @@ class Converter extends StatefulWidget {
 }
 
 class _ConverterState extends State<Converter> {
+   String dropdownvalue = 'Values';
+
+   var items = [
+     'Length',
+     'Currency Exchange'
+     'Time Zone'
+   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,17 +77,24 @@ class _ConverterState extends State<Converter> {
                             offset: Offset(-4, -4),
                             blurRadius: 10,
                             spreadRadius: 1,
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
+                          ),]),
+                          child: DropdownButton(
+                            value: dropdownvalue,
+
+                            icon : const Icon(Icons.keyboard_arrow_down),
+                            items: items.map((String items) {
+                              return DropdownMenuItem(
+                                value: items,
+                                child: Text(items),
+                              );
+                            }).toList(),
+    onChanged: (String? newValue) {
+      setState(() {
+        dropdownvalue = newValue!;
+      });
+    }),
+        ),]
+      ),])],),),
     );
   }
 }
